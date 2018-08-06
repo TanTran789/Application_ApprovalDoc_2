@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_number">
+    <sys_number action="INSERT_OR_UPDATE">
+        <category display_value="" name="x_245124_dxcapp_approval_request">x_245124_dxcapp_approval_request</category>
+        <maximum_digits>7</maximum_digits>
+        <number>1000</number>
+        <prefix>DXC</prefix>
+        <sys_class_name>sys_number</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-07-19 03:39:07</sys_created_on>
+        <sys_id>b4cf6dcfdb131300cdea9b81ca961955</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>DXC</sys_name>
+        <sys_package display_value="DXC Docs Approval" source="x_245124_dxcapp">ea014c59db1f1300cdea9b81ca961943</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DXC Docs Approval">ea014c59db1f1300cdea9b81ca961943</sys_scope>
+        <sys_update_name>sys_number_b4cf6dcfdb131300cdea9b81ca961955</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-07-19 03:39:07</sys_updated_on>
+    </sys_number>
+</record_update>

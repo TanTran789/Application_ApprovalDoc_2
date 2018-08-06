@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_245124_dxcapp.CurrencyConverter</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>CurrencyConverter</name>
+        <script><![CDATA[var CurrencyConverter = Class.create();
+CurrencyConverter.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	
+	getRate: function(){
+		try {
+			var currency = this.getParameter('sysparm_new_local_currency') + '_GBP';
+			var r = new sn_ws.RESTMessageV2('x_245124_dxcapp.DXC_CurrencyConverter', 'Default GET');
+			r.setStringParameterNoEscape('currency', currency);
+			
+			//override authentication profile
+			//authentication type ='basic'/ 'oauth2'
+			//r.setAuthentication(authentication type, profile name);
+			
+			//set a MID server name if one wants to run the message on MID
+			//r.setMIDServer('MY_MID_SERVER');
+			
+			//if the message is configured to communicate through ECC queue, either
+			//by setting a MID server or calling executeAsync, one needs to set skip_sensor
+			//to true. Otherwise, one may get an intermittent error that the response body is null
+			//r.setEccParameter('skip_sensor', true);
+			
+			var response = r.execute();
+			var responseBody = response.getBody();
+			var httpStatus = response.getStatusCode();
+			var jsonObj = JSON.parse(responseBody);
+			var answer = ' ' + jsonObj[currency]['val'];	
+			//gs.addInfoMessage(answer);
+			return	answer;
+		}
+		catch(ex) {
+			var message = ex.getMessage();
+		}
+	},
+	
+	type: 'CurrencyConverter'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-07-23 08:17:09</sys_created_on>
+        <sys_id>adc29b9cdba31300cdea9b81ca9619f8</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>CurrencyConverter</sys_name>
+        <sys_package display_value="DXC Docs Approval" source="x_245124_dxcapp">ea014c59db1f1300cdea9b81ca961943</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="DXC Docs Approval">ea014c59db1f1300cdea9b81ca961943</sys_scope>
+        <sys_update_name>sys_script_include_adc29b9cdba31300cdea9b81ca9619f8</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-07-23 09:06:32</sys_updated_on>
+    </sys_script_include>
+</record_update>
